@@ -1,11 +1,12 @@
 {
   "name": "electron-quick-start",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"
   },
+  "registry": "http://localhost:4873",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom/electron-quick-start.git"
@@ -24,5 +25,9 @@
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.36.0"
+  },
+  "dependencies": {
+    
+    "electron-updater": "^0.3.2"
   }
 }

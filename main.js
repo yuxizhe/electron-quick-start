@@ -3,28 +3,35 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const updater = require('electron-updater');
 
+
 var mainWindow = null;
 
 app.on('window-all-closed', function() {
-    app.quit();
+    if (process.platform != 'darwin')
+        app.quit()
 });
 
 app.on('ready', function() {
 
-    console.log(" electron on  ");
+
 
     updater.on('ready', function() {
-        updaterWindow = new BrowserWindow({
-            name: "updater",
+        mainWindow = new BrowserWindow({
+            name: "ea-todo",
             width: 400,
             height: 600,
             toolbar: false
         });
-        mainWindow.loadURL('file://' + __dirname + "/index.html");
 
+
+        mainWindow.loadURL('file://' + __dirname + "/index.html");
+        mainWindow.openDevTools({
+            detach: true
+        });
         mainWindow.on('closed', function() {
             mainWindow = null;
         });
+        console.log(" electron on  ");
     });
 
     updater.on('update-required', function() {
